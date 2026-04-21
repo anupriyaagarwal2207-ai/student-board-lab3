@@ -1,4 +1,4 @@
-// State Management
+
 let students = [
   { id: 1, name: 'Alice Johnson', score: 85 },
   { id: 2, name: 'Bob Smith', score: 42 },
@@ -7,13 +7,13 @@ let students = [
 
 const PASS_MARK = 35;
 
-// DOM Elements
+
 const studentList = document.getElementById('student-list');
 const studentForm = document.getElementById('student-form');
 const totalCount = document.getElementById('total-count');
 const emptyState = document.getElementById('empty-state');
 
-// Component: StudentRow
+
 function createStudentRow(student, index) {
   const isPass = student.score >= PASS_MARK;
   const tr = document.createElement('tr');
@@ -33,13 +33,12 @@ function createStudentRow(student, index) {
     </td>
   `;
 
-  // Update score listener
   const scoreInput = tr.querySelector('.score-edit');
   scoreInput.addEventListener('change', (e) => {
     updateScore(student.id, parseInt(e.target.value));
   });
 
-  // Delete listener
+ 
   const deleteBtn = tr.querySelector('.delete-btn');
   deleteBtn.addEventListener('click', () => {
     deleteStudent(student.id);
@@ -48,11 +47,11 @@ function createStudentRow(student, index) {
   return tr;
 }
 
-// Logic: Update List
+
 function renderScoreboard() {
   studentList.innerHTML = '';
   
-  // Sort by score descending
+
   const sortedStudents = [...students].sort((a, b) => b.score - a.score);
   
   if (sortedStudents.length === 0) {
@@ -67,7 +66,7 @@ function renderScoreboard() {
   totalCount.textContent = students.length;
 }
 
-// Logic: Add Student
+
 studentForm.addEventListener('submit', (e) => {
   e.preventDefault();
   const name = document.getElementById('student-name').value;
@@ -84,7 +83,7 @@ studentForm.addEventListener('submit', (e) => {
   renderScoreboard();
 });
 
-// Logic: Update Score
+
 function updateScore(id, newScore) {
   const student = students.find(s => s.id === id);
   if (student) {
@@ -93,11 +92,11 @@ function updateScore(id, newScore) {
   }
 }
 
-// Logic: Delete Student
+
 function deleteStudent(id) {
   students = students.filter(s => s.id !== id);
   renderScoreboard();
 }
 
-// Initial Render
+
 renderScoreboard();
