@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Scoreboard | Premium</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <div id="app">
+      <div class="bg-shape shape-1"></div>
+      <div class="bg-shape shape-2"></div>
+      
+      <div class="container">
+        <!-- Header Component -->
+        <header id="header" class="glass-card">
+          <h1>Student Scoreboard</h1>
+          <p>Real-time performance tracking</p>
+        </header>
+
+        <main>
+          <!-- AddStudentForm Component -->
+          <section id="add-student-section" class="glass-card">
+            <h2>Add New Student</h2>
+            <form id="student-form">
+              <div class="input-group">
+                <label for="student-name">Full Name</label>
+                <input type="text" id="student-name" placeholder="John Doe" required>
+              </div>
+              <div class="input-group">
+                <label for="student-score">Score</label>
+                <input type="number" id="student-score" min="0" max="100" placeholder="0-100" required>
+              </div>
+              <button type="submit" id="add-btn">Add Student</button>
+            </form>
+          </section>
+
+          <!-- StudentTable Component -->
+          <section id="scoreboard" class="glass-card">
+            <div class="section-header">
+              <h2>Scoreboard</h2>
+              <div class="stats">Total: <span id="total-count">0</span></div>
+            </div>
+            <div class="table-wrapper">
+              <table id="student-table">
+                <thead>
+                  <tr>
+                    <th>Rank</th>
+                    <th>Name</th>
+                    <th>Score</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="student-list"></tbody>
+              </table>
+              <div id="empty-state" class="empty-state">No students added.</div>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
